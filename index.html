@@ -159,6 +159,12 @@ body {
   gap: 8px;
 }
 
+.three {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
 .upload {
   display: block;
   border: 1.5px dashed var(--main);
@@ -254,7 +260,8 @@ body {
     padding: 24px 18px;
   }
 
-  .two {
+  .two,
+  .three {
     grid-template-columns: 1fr;
   }
 
@@ -313,7 +320,7 @@ body {
   <div class="portfolio-warning">
     ❗ 성형 작업이 포함된 작업물의 영구 비공개 요청 시 아래 사항을 필독해주세요.<br>
     ⚠️ 작업물 비공개 추가금은 <b>총 결제금액의 2배</b>로 산정됩니다.<br>
-    ⚠️ 예: 주문 결제금액이 100,000원이라면, 비공개 요청 시 총 결제금액은 200,000원으로 진행됩니다.
+    ⚠️ 예: 주문 결제금액이 20,000원이라면, 비공개 요청 시 총 결제금액은 40,000원으로 진행됩니다.
   </div>
 
   <div class="label">4. 신청 작업 내용 <span class="required">*</span></div>
@@ -332,13 +339,14 @@ body {
   <textarea id="boothLink" class="textarea" placeholder="아바타 / 의상 / 헤어 / 악세 / 눈동자 링크&#10;가슴 물리 필요 여부도 적어주세요!"></textarea>
 
   <div class="label">6-1. 컬러 정보</div>
-  <div class="two">
+  <div class="three">
     <input id="hairColor" class="input" type="text" placeholder="헤어 컬러">
+    <input id="eyeColor" class="input" type="text" placeholder="눈 컬러">
     <input id="clothesColor" class="input" type="text" placeholder="의상 컬러">
   </div>
 
   <label class="upload">
-    📎 의상 컬러 이미지 첨부 <span class="tip">여러 장 가능</span>
+    📎 의상 컬러 이미지 첨부 <span class="tip">여러 장 가능 / 다시 눌러 추가 첨부 가능</span>
     <input id="colorImages" type="file" accept="image/*" multiple>
   </label>
   <div id="previewArea" class="preview"></div>
@@ -393,6 +401,8 @@ var guideMap = {
   starter: '<b>버츄얼 스타터 세트</b>는 성형, 세팅, 페이셜 등 전체적인 작업 방향을 작가가 잡아주는 메뉴입니다.<br>❗ 아무것도 모르겠고 작가가 알잘딱으로 진행해주길 원하거나, 성형 작업을 포함하고 싶다면 <b>버츄얼 스타터 세트</b>를 권장합니다.',
   vrc: '<b>VRC 아바타</b>는 원하는 옵션을 직접 선택해 신청하는 메뉴입니다.<br>❗ Basic / Standard / Premium 옵션 중 필요한 범위를 선택해 주세요. 헤어와 의상을 몇 개 입힐지도 신청 내용에 적어주세요.'
 };
+
+var attachedImages = [];
 
 function renderWorkTypes(type) {
   var row = document.getElementById("workTypeRow");
@@ -487,9 +497,10 @@ document.querySelectorAll(".textarea").forEach(function(textarea) {
 
 document.getElementById("colorImages").addEventListener("change", function() {
   var preview = document.getElementById("previewArea");
-  preview.innerHTML = "";
 
   Array.from(this.files).forEach(function(file) {
+    attachedImages.push(file);
+
     var reader = new FileReader();
 
     reader.onload = function(e) {
@@ -500,6 +511,8 @@ document.getElementById("colorImages").addEventListener("change", function() {
 
     reader.readAsDataURL(file);
   });
+
+  this.value = "";
 });
 
 function copyAeongForm() {
@@ -532,6 +545,7 @@ function copyAeongForm() {
 "6. Booth 아이템 링크 :\n" + emptyCheck(document.getElementById("boothLink").value) + "\n\n" +
 "6-1. 컬러 정보 :\n" +
 "헤어 컬러 : " + emptyCheck(document.getElementById("hairColor").value) + "\n" +
+"눈 컬러 : " + emptyCheck(document.getElementById("eyeColor").value) + "\n" +
 "의상 컬러 : " + emptyCheck(document.getElementById("clothesColor").value) + "\n\n" +
 "7. 레퍼런스 / 아바타 설명 :\n" + emptyCheck(document.getElementById("avatarDesc").value) + "\n" +
 "8. 페이셜 요청사항 : " + emptyCheck(document.getElementById("facialRequest").value) + "\n" +
