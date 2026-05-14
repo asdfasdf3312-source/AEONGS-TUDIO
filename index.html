@@ -335,8 +335,8 @@ body {
   <input id="broadcastName" class="input" type="text" placeholder="방송 닉네임">
   <input id="avatarDate" class="input" type="text" placeholder="아바타 공개일 ex. 12월 중순쯤">
 
-  <div class="label">6. Booth 아이템 링크 <span class="tip">의상·헤어가 여러 개면 기본 파츠 표시</span></div>
-  <textarea id="boothLink" class="textarea" placeholder="아바타 / 의상 / 헤어 / 악세 / 눈동자 링크&#10;가슴 물리 필요 여부도 적어주세요!"></textarea>
+  <div class="label">6. Booth 아이템 링크 <span class="tip">의상·헤어 갯수도 기입</span></div>
+  <textarea id="boothLink" class="textarea" placeholder="아바타 / 의상 / 헤어 / 악세 / 메이크업 / 눈동자 / 네일 링크&#10;필요한 파츠만 기입 하셔도 됩니다"></textarea>
 
   <div class="label">6-1. 컬러 정보</div>
   <div class="three">
@@ -352,25 +352,22 @@ body {
   <div id="previewArea" class="preview"></div>
 
   <div class="label">7. 레퍼런스 / 원하는 아바타 설명 <span class="tip">일러 기반이면 원화 첨부</span></div>
-  <textarea id="avatarDesc" class="textarea" placeholder="눈매 :&#10;입모양 :&#10;얼굴 연령대 :&#10;눈썹 모양 :"></textarea>
+  <textarea id="avatarDesc" class="textarea" placeholder="눈매는 사진 보다 조금 올라갔으면 좋겠어요 &#10;입모양은 3자 모양이였음 좋겠어요 &#10;사진보다 얼굴형은 성숙했음 좋겠어요 :&#10;눈썹 모양 :"></textarea>
 
-  <div class="label">8. 페이셜 작업 요청사항</div>
-  <textarea id="facialRequest" class="textarea" placeholder="ex) 볼빵빵이 크지 않았으면 좋겠어요"></textarea>
-
-  <div class="label">9. 유니티 파일 필요 여부 <span class="tip">추가금 5만원 / 블렌드 전달 불가</span></div>
+  <div class="label">8. 유니티 파일 필요 여부 <span class=
   <div class="row" data-name="unityNeed">
     <button class="choice active" type="button" data-value="필요 없어요">필요 없어요</button>
     <button class="choice" type="button" data-value="필요해요 (+5만원)">필요해요 (+5만원)</button>
   </div>
 
-  <div class="label">10. 유니티 파일 용도</div>
+  <div class="label">9. 유니티 파일 용도</div>
   <div class="row" data-name="unityUse">
-    <button class="choice active" type="button" data-value="1번 (직접 추가용)">1번 직접 추가용</button>
-    <button class="choice" type="button" data-value="2번 (파일 백업용)">2번 파일 백업용</button>
+    <button class="choice active" type="button" data-value="1번 (파일 백업용)">1번 직접 추가용</button>
+    <button class="choice" type="button" data-value="2번 (타작가에게 작업 맡기는 용도)">2번 파일 백업용</button>
     <button class="choice" type="button" data-value="해당없음">해당없음</button>
   </div>
 
-  <div class="label">11. 리뷰 이벤트 참가 여부 <span class="tip">약속 시 3,000원 할인</span></div>
+  <div class="label">10. 리뷰 이벤트 참가 여부 <span class="tip">약속 시 다음 방문때에 10,000원 할인</span></div>
   <div class="row" data-name="reviewEvent">
     <button class="choice active" type="button" data-value="O (약속할게요!)">O 약속할게요!</button>
     <button class="choice" type="button" data-value="X">X</button>
